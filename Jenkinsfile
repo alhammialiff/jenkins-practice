@@ -9,6 +9,7 @@ pipeline {
     }
     stages {
         stage('Build') {
+            agent any
             steps {
                 echo "Building.."
                 sh '''
