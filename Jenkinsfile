@@ -1,7 +1,7 @@
 pipeline {
     agent { 
         node {
-            any
+            label 'built-in-node'
             }
       }
     triggers {
