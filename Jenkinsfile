@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh '''
-                docker rmi -f test-app
+                cd src
                 docker build -t test-app .
                 '''
             }
