@@ -5,16 +5,14 @@ pipeline {
             }
       }
     triggers {
-        pollSCM '* * * * *'
+        pollSCM '*/3 * * * *'
     }
     stages {
         stage('SonarQube Analysis') {
             steps {
-                def scanner = tool 'SonarScanner 4.0';
                 withSonarQubeEnv('SonarQube Server'){
-                    sh '''
-                    mvn clean package sonar:sonar
-                    '''
+                    sh 'mvn clean package sonar:sonar'
+                    
                 }
             }
         }
