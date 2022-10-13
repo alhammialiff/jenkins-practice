@@ -9,10 +9,10 @@ pipeline {
     }
     stages {
         stage('SonarQube Analysis') {
+            agent any
             steps {
                 withSonarQubeEnv('SonarQube Server'){
-                    sh '''
-                    sonar-scanner \
+                    sh '''sonar-scanner \
                     -Dsonar.projectKey=cynapseai-homework \
                     -Dsonar.sources=. \
                     -Dsonar.host.url=http://localhost:9000 \
