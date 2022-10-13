@@ -11,8 +11,13 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube Server'){
-                    sh 'mvn clean package sonar:sonar'
-                    
+                    sh '''
+                    sonar-scanner \
+                    -Dsonar.projectKey=cynapseai-homework \
+                    -Dsonar.sources=. \
+                    -Dsonar.host.url=http://localhost:9000 \
+                    -Dsonar.login=sqp_d3ad9b95a547b0aa942e67f04859684cbbb73cfe'
+                    '''
                 }
             }
         }
