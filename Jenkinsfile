@@ -12,7 +12,9 @@ pipeline {
             steps {
                 def scanner = tool 'SonarScanner 4.0';
                 withSonarQubeEnv('SonarQube Server'){
-                    sh "${scanner}/bin/sonar-scanner"
+                    sh '''
+                    mvn clean package sonar:sonar
+                    '''
                 }
             }
         }
